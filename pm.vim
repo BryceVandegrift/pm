@@ -1,6 +1,6 @@
 " pm.vim - Stupidly Simple Vim/NeoVim plugin manager
 " Author: Bryce Vandegrift <https://brycevandegrift.xyz>
-" Version: 0.1
+" Version: 0.2
 
 if exists("g:pm_loaded") || &cp || v:version < 800
 	finish
@@ -31,4 +31,16 @@ function! s:downloadPlugins()
 	echom "Done!"
 endfunction
 
+function! s:updatePM()
+	echom "Updating pm"
+	if has("nvim")
+		let l:update_path = trim(system('echo ${XDG_DATA_DIR:-$HOME/.local/share}/nvim/site/plugin/'))
+	else
+		let l:update_path = trim(system('echo $HOME/.vim/plugin/'))
+	endif
+	execute "!curl -fL https://git.sr.ht/~bpv/pm/blob/master/pm.vim > " . l:update_path . "pm.vim"
+	echom "Done!"
+endfunction
+
 command! -nargs=0 DownloadPlugins call s:downloadPlugins()
+command! -nargs=0 UpdatePM call s:updatePM()
