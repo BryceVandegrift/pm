@@ -13,13 +13,13 @@ Requirements:
 ### Vim
 
 ``` sh
-curl -fLo ~/.vim/plugin/ --create-dirs https://git.sr.ht/~bpv/pm/blob/master/pm.vim
+curl -fLo ~/.vim/plugin/pm.vim --create-dirs https://git.sr.ht/~bpv/pm/blob/master/pm.vim
 ```
 
 ### NeoVim
 
 ``` sh
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/plugin/ --create-dirs https://git.sr.ht/~bpv/pm/blob/master/pm.vim'
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/plugin/pm.vim --create-dirs https://git.sr.ht/~bpv/pm/blob/master/pm.vim'
 ```
 
 ## Usage
