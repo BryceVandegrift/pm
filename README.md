@@ -13,13 +13,13 @@ Requirements:
 ### Vim
 
 ``` sh
-curl -fLO ~/.vim/plugin/ --create-dirs https://git.sr.ht/~bpv/pm/blob/master/pm.vim
+curl -fLo ~/.vim/plugin/ --create-dirs https://git.sr.ht/~bpv/pm/blob/master/pm.vim
 ```
 
 ### NeoVim
 
 ``` sh
-sh -c 'curl -fLO "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/plugin/ --create-dirs https://git.sr.ht/~bpv/pm/blob/master/pm.vim'
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/plugin/ --create-dirs https://git.sr.ht/~bpv/pm/blob/master/pm.vim'
 ```
 
 ## Usage
@@ -38,3 +38,4 @@ let g:plugins = ["https://github.com/ap/vim-css-color.git", "https://git.sr.ht/~
 ### Commands
 
 - `DownloadPlugins`: Downloads all plugins from thier Git repos
+- `UpdatePM`: Downloads and updates pm
