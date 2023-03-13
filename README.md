@@ -2,6 +2,12 @@
 
 A stupidly simple Vim/NeoVim plugin manager
 
+## Why?
+
+Vim and NeoVim now have plugin management builtin so I have no need for
+a "bloated" plugin manager that is thousands of lines long. All I need
+is a Vim/NeoVim script that will download and update my plugins.
+
 ## Install
 
 Requirements:
