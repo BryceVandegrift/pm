@@ -1,6 +1,6 @@
 " pm.vim - Stupidly Simple Vim/NeoVim plugin manager
 " Author: Bryce Vandegrift <https://brycevandegrift.xyz>
-" Version: 0.3.1
+" Version: 0.4.0
 
 if exists("g:pm_loaded") || &cp || v:version < 800
 	finish
@@ -22,6 +22,22 @@ endif
 if !exists("g:plugins")
 	let g:plugins = []
 endif
+
+" Takes a git url and returns base repo name
+function! s:namefromgit(str)
+	let l:split_url = split(substitute(a:str, "\.git$", "", ""), "/")
+	return l:split_url[len(l:split_url) - 1]
+endfunction
+
+" Checks is val is in list
+function! s:notinlist(val, list)
+	for item in a:list
+		if (match(item, a:val) != -1)
+			return v:false
+		endif
+	endfor
+	return v:true
+endfunction
 
 function! s:downloadPlugins()
 	echom "Downloading plugins..."
@@ -45,6 +61,25 @@ function! s:updatePlugins()
 	echom "Done!"
 endfunction
 
+function! s:purgePlugins()
+	echom "Purging plugins..."
+	if empty(g:plugins)
+		echom "No plugins defined!"
+		return
+	endif
+	" Lots of filtering and mapping
+	let l:paths = globpath(g:pm_path, "*", 0, 1)
+	call filter(l:paths, "isdirectory(v:val)")
+	call map(l:paths, "split(v:val, '/')")
+	call map(l:paths, "get(v:val, -1)")
+	let l:plugs = map(g:plugins[0:], "s:namefromgit(v:val)")
+	call filter(l:paths, "s:notinlist(v:val, l:plugs)")
+	for item in l:paths
+		execute "!rm -rf " . g:pm_path . item
+	endfor
+	echom "Done!"
+endfunction
+
 function! s:updatePM()
 	echom "Updating pm..."
 	if has("nvim")
@@ -58,4 +93,5 @@ endfunction
 
 command! -nargs=0 DownloadPlugins call s:downloadPlugins()
 command! -nargs=0 UpdatePlugins call s:updatePlugins()
+command! -nargs=0 PurgePlugins call s:purgePlugins()
 command! -nargs=0 UpdatePM call s:updatePM()
