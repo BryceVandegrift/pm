@@ -29,7 +29,7 @@ function! s:namefromgit(str)
 	return l:split_url[len(l:split_url) - 1]
 endfunction
 
-" Checks is val is in list
+" Checks if val is not in list
 function! s:notinlist(val, list)
 	for item in a:list
 		if (match(item, a:val) != -1)

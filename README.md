@@ -35,7 +35,8 @@ Create plugin list
 ### Example
 
 In your `.vim` file (Vim) or `init.vim` (NeoVim) file create a list variable
-named `g:plugins`.
+named `g:plugins`. This is where you will list the Git urls of all the plugins
+that you want to download.
 
 ``` vim
 let g:plugins = ["https://github.com/ap/vim-css-color.git", "https://git.sr.ht/~k1nkreet/gemivim"]
