@@ -1,6 +1,6 @@
 " pm.vim - Stupidly Simple Vim/NeoVim plugin manager
 " Author: Bryce Vandegrift <https://brycevandegrift.xyz>
-" Version: 0.4.0
+" Version: 0.4.1
 
 if exists("g:pm_loaded") || &cp || v:version < 800
 	finish
@@ -26,7 +26,7 @@ endif
 " Takes a git url and returns base repo name
 function! s:namefromgit(str)
 	let l:split_url = split(substitute(a:str, "\.git$", "", ""), "/")
-	return l:split_url[len(l:split_url) - 1]
+	return l:split_url[-1]
 endfunction
 
 " Checks if val is not in list
