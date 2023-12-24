@@ -31,9 +31,9 @@ If you are using Vim run:
 
 If you are using NeoVim run:
 >
-	sh -c \
-	'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pluginpm.vim \
-	--create-dirs https://git.sr.ht/~bpv/pm/blob/master/pm.vim'
+ sh -c \
+ 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pluginpm.vim \
+ --create-dirs https://git.sr.ht/~bpv/pm/blob/master/pm.vim'
 <
 
 {2} https://www.vim.org/
