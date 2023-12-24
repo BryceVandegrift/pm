@@ -1,0 +1,82 @@
+*pm.txt* A Stupidly Simple Plugin Manager
+
+Author: Bryce Vandegrift <https://brycevandegrift.xyz>
+
+INTRODUCTION                                               *pm-introduction*
+============================================================================
+
+pm is a (stupidly) simple Vim/NeoVim plugin manager.
+Unlike other Vim/NeoVim package managers, pm is intended to be as simple
+as humanly possible. This means no fancy features that {other}{1} "minimal"
+plugin managers would have. All a plugin manager should do is just download,
+update, and remove plugins. pm leverages Vim/NeoVim's new builtin plugin
+management system.
+
+                                    {1} https://github.com/junegunn/vim-plug
+
+
+INSTALLATION                                               *pm-installation*
+============================================================================
+
+Make sure that you have:
+- {Vim}{2} > 8.0 or {NeoVim}{3}
+- {cURL}{4}
+- {Git}{5}
+
+If you are using Vim run:
+>
+ curl -fLo ~/.vim/plugin/pm.vim --create-dirs \
+ https://git.sr.ht/~bpv/pm/blob/master/pm.vim
+<
+
+If you are using NeoVim run:
+>
+	sh -c \
+	'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pluginpm.vim \
+	--create-dirs https://git.sr.ht/~bpv/pm/blob/master/pm.vim'
+<
+
+{2} https://www.vim.org/
+{3} https://neovim.io/
+{4} https://curl.se/
+{5} https://git-scm.com/
+
+
+SETUP                                                             *pm-setup*
+============================================================================
+
+                                                                 *g:plugins*
+
+To download plugins you first need to create a plugin list in your `.vim`
+file if you are using Vim, or `init.vim` if you are using NeoVim.
+You need to create a variable called `g:plugins` at set it equal to your
+desired list of plugins. Here is an example:
+>
+ let g:plugins = [
+ 		\ "https://github.com/ap/vim-css-color.git",
+		\ "https://git.sr.ht/~k1nkreet/gemivim",
+		\ "https://github.com/tpope/vim-commentary.git"]
+<
+
+
+USAGE                                                             *pm-usage*
+============================================================================
+
+               *:DownloadPlugins* *:UpdatePlugins* *PurgePlugins* *UpdatePM*
+
+pm has a few commands that you can use:
+- `:DownloadPlugins`: Downloads all plugins from their Git repos
+- `:UpdatePlugins`: Updates all installed plugins
+- `:PurgePlugins`: Removes all plugins not defined in `g:plugins`
+- `:UpdatePM`: Downloads and updates pm itself
+
+
+LICENSE                                                         *pm-license*
+============================================================================
+
+GNU GPL 3.0 or later
+<https://www.gnu.org/licenses/gpl-3.0.txt>
+
+
+============================================================================
+ vim:tw=78:sw=2:ts=2:ft=help:norl
