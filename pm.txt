@@ -42,6 +42,29 @@ If you are using NeoVim run:
 {5} https://git-scm.com/
 
 
+< Installing docs >________________________________________________________~
+                                                       *pm-installing-docs*
+
+If you are using Vim run:
+>
+ curl -fLo ~/.vim/doc/pm.txt --create-dirs \
+ https://git.sr.ht/~bpv/pm/blob/master/pm.txt
+ vim -c "helptags ~/.vim/doc | q"
+<
+
+If you are using NeoVim run:
+>
+ sh -c \
+ 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/doc/pm.txt \
+ --create-dirs https://git.sr.ht/~bpv/pm/blob/master/pm.txt'
+ nvim -c \
+ "lua
+ dir = os.getenv('XDG_DATA_HOME') or os.getenv('HOME') .. '/.local/share'
+ vim.cmd('helptags ' .. dir .. '/nvim/site/doc')
+ vim.cmd(':q!')"
+<
+
+
 SETUP                                                             *pm-setup*
 ============================================================================
 
