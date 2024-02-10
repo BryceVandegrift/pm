@@ -1,6 +1,6 @@
 " pm.vim - Stupidly Simple Vim/NeoVim plugin manager
 " Author: Bryce Vandegrift <https://brycevandegrift.xyz>
-" Version: 0.5.0
+" Version: 0.6.0
 
 if exists("g:pm_loaded") || &cp || v:version < 800
 	finish
@@ -45,6 +45,13 @@ function! s:updatedocs(item)
 		execute "helptags " . g:pm_path . a:item . "/doc"
 		echom "Adding docs for " . a:item . "..."
 	endif
+endfunction
+
+function! s:clonePlugin(url)
+	echom "Cloning " . a:url . "..."
+	execute "!cd " . g:pm_path . ";git clone " . a:url
+	call s:updatedocs(s:namefromgit(a:url))
+	echom "Done!"
 endfunction
 
 function! s:downloadPlugins()
@@ -101,6 +108,7 @@ function! s:updatePM()
 endfunction
 
 command! -nargs=0 DownloadPlugins call s:downloadPlugins()
+command! -nargs=1 ClonePlugin call s:clonePlugin(<args>)
 command! -nargs=0 UpdatePlugins call s:updatePlugins()
 command! -nargs=0 PurgePlugins call s:purgePlugins()
 command! -nargs=0 UpdatePM call s:updatePM()
