@@ -1,6 +1,6 @@
 " pm.vim - Stupidly Simple Vim/NeoVim plugin manager
 " Author: Bryce Vandegrift <https://brycevandegrift.xyz>
-" Version: 0.6.1
+" Version: 0.7.0
 
 if exists("g:pm_loaded") || &cp || v:version < 800
 	finish
@@ -67,6 +67,17 @@ function! s:downloadPlugins()
 	echom "Done!"
 endfunction
 
+function! s:listPlugins()
+	echom "Installed plugins:"
+	let l:paths = globpath(g:pm_path, "*", 0, 1)
+	call filter(l:paths, "isdirectory(v:val)")
+	call map(l:paths, "split(v:val, '/')")
+	call map(l:paths, "get(v:val, -1)")
+	for item in l:paths
+		echom item
+	endfor
+endfunction
+
 function! s:updatePlugins()
 	echom "Updating plugins..."
 	let l:paths = globpath(g:pm_path, "*", 0, 1)
@@ -109,8 +120,9 @@ function! s:updatePM()
 	echom "Done!"
 endfunction
 
-command! -nargs=0 DownloadPlugins call s:downloadPlugins()
 command! -nargs=1 ClonePlugin call s:clonePlugin(<args>)
-command! -nargs=0 UpdatePlugins call s:updatePlugins()
+command! -nargs=0 DownloadPlugins call s:downloadPlugins()
+command! -nargs=0 ListPlugins call s:listPlugins()
 command! -nargs=0 PurgePlugins call s:purgePlugins()
+command! -nargs=0 UpdatePlugins call s:updatePlugins()
 command! -nargs=0 UpdatePM call s:updatePM()

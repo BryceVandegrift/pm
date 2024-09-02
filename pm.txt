@@ -72,7 +72,7 @@ SETUP                                                             *pm-setup*
 
 To download plugins you first need to create a plugin list in your `.vim`
 file if you are using Vim, or `init.vim` if you are using NeoVim.
-You need to create a variable called `g:plugins` at set it equal to your
+You need to create a variable called `g:plugins` and set it equal to your
 desired list of plugins. Here is an example:
 >
  let g:plugins = [
@@ -85,14 +85,15 @@ desired list of plugins. Here is an example:
 USAGE                                                             *pm-usage*
 ============================================================================
 
-               *:DownloadPlugins* *:UpdatePlugins* *PurgePlugins* *UpdatePM*
+     *:ListPlugins* *:DownloadPlugins* *:UpdatePlugins* *:PurgePlugins* *:UpdatePM*
 
 pm has a few commands that you can use:
-- `:DownloadPlugins`: Downloads all plugins from their Git repos
 - `:ClonePlugin "url"`: Downloads plugin from specified `url` but does not add
 	it to `g:plugins`
-- `:UpdatePlugins`: Updates all installed plugins
+- `:DownloadPlugins`: Downloads all plugins from their Git repos
+- `:ListPlugins`: Lists currently installed plugins
 - `:PurgePlugins`: Removes all plugins not defined in `g:plugins`
+- `:UpdatePlugins`: Updates all installed plugins
 - `:UpdatePM`: Downloads and updates pm itself
 
 
