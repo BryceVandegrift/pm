@@ -82,9 +82,10 @@ desired list of plugins. Here is an example:
 <
 
 
-USAGE                                                             *pm-usage*
+COMMANDS                                                       *pm-commands*
 ============================================================================
 
+     *:ClonePlugin*
      *:ListPlugins* *:DownloadPlugins* *:UpdatePlugins* *:PurgePlugins* *:UpdatePM*
 
 pm has a few commands that you can use:
@@ -95,6 +96,17 @@ pm has a few commands that you can use:
 - `:PurgePlugins`: Removes all plugins not defined in `g:plugins`
 - `:UpdatePlugins`: Updates all installed plugins
 - `:UpdatePM`: Downloads and updates pm itself
+
+
+VARIABLES                                                     *pm-variables*
+============================================================================
+
+                                           *g:plugins* *g:post_download_hooks*
+
+pm has a few user-defined variables to use:
+- `g:plugins`: List of user plugins
+- `g:post_download_hooks`: List of hooks to run after running
+	`:DownloadPlugins`
 
 
 LICENSE                                                         *pm-license*

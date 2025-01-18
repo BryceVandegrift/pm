@@ -1,6 +1,6 @@
 " pm.vim - Stupidly Simple Vim/NeoVim plugin manager
 " Author: Bryce Vandegrift <https://brycevandegrift.xyz>
-" Version: 0.7.0
+" Version: 0.7.1
 
 if exists("g:pm_loaded") || &cp || v:version < 800
 	finish
@@ -64,6 +64,12 @@ function! s:downloadPlugins()
 		execute "!cd " . g:pm_path . ";git clone " . item
 		call s:updatedocs(s:namefromgit(item))
 	endfor
+	if exists(g:post_download_hooks)
+		echom "Running post download hooks..."
+		for item in g:post_download_hooks
+			execute item
+		endfor
+	endif
 	echom "Done!"
 endfunction
 

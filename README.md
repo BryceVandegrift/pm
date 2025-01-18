@@ -64,3 +64,8 @@ let g:plugins = ["https://github.com/ap/vim-css-color.git", "https://git.sr.ht/~
 - `:PurgePlugins`: Removes all plugins not defined in `g:plugins`
 - `:UpdatePlugins`: Updates all installed plugins
 - `:UpdatePM`: Downloads and updates pm
+
+### Variables
+
+- `g:plugins`: List of user plugins
+- `g:post_download_hooks`: List of hooks to run after `:DownloadPlugins` is run
