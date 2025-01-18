@@ -64,7 +64,7 @@ function! s:downloadPlugins()
 		execute "!cd " . g:pm_path . ";git clone " . item
 		call s:updatedocs(s:namefromgit(item))
 	endfor
-	if exists(g:post_download_hooks)
+	if !empty(g:post_download_hooks)
 		echom "Running post download hooks..."
 		for item in g:post_download_hooks
 			execute item

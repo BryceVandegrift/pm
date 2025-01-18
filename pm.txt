@@ -68,8 +68,6 @@ If you are using NeoVim run:
 SETUP                                                             *pm-setup*
 ============================================================================
 
-                                                                 *g:plugins*
-
 To download plugins you first need to create a plugin list in your `.vim`
 file if you are using Vim, or `init.vim` if you are using NeoVim.
 You need to create a variable called `g:plugins` and set it equal to your
