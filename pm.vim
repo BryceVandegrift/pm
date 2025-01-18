@@ -23,6 +23,10 @@ if !exists("g:plugins")
 	let g:plugins = []
 endif
 
+if !exists("g:post_download_hooks")
+	let g:post_download_hooks = []
+endif
+
 " Takes a git url and returns base repo name
 function! s:namefromgit(str)
 	let l:split_url = split(substitute(a:str, "\.git$", "", ""), "/")
