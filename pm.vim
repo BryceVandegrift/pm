@@ -1,6 +1,6 @@
 " pm.vim - Stupidly Simple Vim/NeoVim plugin manager
 " Author: Bryce Vandegrift <https://brycevandegrift.xyz>
-" Version: 0.7.1
+" Version: 0.7.2
 
 if exists("g:pm_loaded") || &cp || v:version < 800
 	finish
@@ -25,6 +25,10 @@ endif
 
 if !exists("g:post_download_hooks")
 	let g:post_download_hooks = []
+endif
+
+if !exists("g:post_update_hooks")
+	let g:post_update_hooks = []
 endif
 
 " Takes a git url and returns base repo name
@@ -95,6 +99,12 @@ function! s:updatePlugins()
 	for item in l:paths
 		execute "!git -C " . item . " pull"
 	endfor
+	if !empty(g:post_update_hooks)
+		echom "Running post update hooks..."
+		for item in g:post_update_hooks
+			execute item
+		endfor
+	endif
 	echom "Done!"
 endfunction
 

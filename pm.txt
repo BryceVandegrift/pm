@@ -99,12 +99,14 @@ pm has a few commands that you can use:
 VARIABLES                                                     *pm-variables*
 ============================================================================
 
-                                           *g:plugins* *g:post_download_hooks*
+                      *g:plugins* *g:post_download_hooks* *g:post_update_hooks*
 
 pm has a few user-defined variables to use:
 - `g:plugins`: List of user plugins
 - `g:post_download_hooks`: List of hooks to run after running
 	`:DownloadPlugins`
+- `g:post_update_hooks`: List of hooks to run after running
+	`:UpdatePlugins`
 
 
 LICENSE                                                         *pm-license*
