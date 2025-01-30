@@ -69,3 +69,4 @@ let g:plugins = ["https://github.com/ap/vim-css-color.git", "https://git.sr.ht/~
 
 - `g:plugins`: List of user plugins
 - `g:post_download_hooks`: List of hooks to run after `:DownloadPlugins` is run
+- `g:post_update_hooks`: List of hooks to run after `:UpdatePlugins` is run
